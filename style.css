@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    flex-direction: row;
+    /*font-family: 'Noto Sans', sans-serif;*/
+    font-family: 'Comfortaa', cursive;
+    /* font-family: 'Quattrocento', serif; */
+    margin: 30px;
+    margin-left: 60px;
+    margin-right: 40px;
+}
+
+.calendar_list,
+.calendar_container {
+    margin-top: -10px;
+}
+
+.date_header {
+    font-weight: bold;
+    list-style: none;
+    font-size: larger;
+    margin-top: 30px;
+}
+
+.weather_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+}
+
+.weather_daily {
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.temperature_daily {
+    font-size: 70px;
+    margin-left: 20px;
+}
+
+.weather_hourly {
+    display: flex;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.rain_alert {
+    color: red;
+    font-size: larger;
+    font-style: italic;
+}
+
+.temperature_hourly {
+    font-size: smaller;
+    margin-left: 20px;
+}
+
+.precipitation_hourly {
+    font-size: smaller;
+    margin-left: 5px;
+    color: red;
+}
+
+.calendar_container {
+    display: flex;
+    font-size: x-large;
+}
+
+.hourly_header {
+    font-style: italic;
+}
+
+.calendar_list {
+    margin: 0;
+}
+
+.tube_icon {
+    margin: 20px;
+    font-size: x-large;
+}
+
+.tube_container {
+    margin-top: 30;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.tube_status_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.tube_disruption {
+    color: red;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.no_event {
+    font-style: italic;
+    list-style: none;
+}

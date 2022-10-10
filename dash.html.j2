@@ -1,0 +1,66 @@
+<html style="max-width:{{width}}; max-height:{{height}}">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="owfont-regular.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Noto+Sans:wght@300&display=swap" rel="stylesheet"> 
+    <body>
+        <!-- Weather & tube status -->
+        <div class="weather_container">
+            <div class="weather_daily">
+                <i class="owf owf-{{weather.today.weather_id}} owf-2x"></i>
+                <span class="temperature_daily">{{weather.today.temperature}}°</span>
+            </div>
+            <div class="hourly_header">
+              From {{weather.hourly[0].hour}} to {{weather.hourly[5].hour}}.
+            </div>
+            {% for w in weather.hourly[:6] %}
+                <div class="weather_hourly">
+                    <i class="owf owf-{{w.weather_id}}"></i>
+                    <span class="temperature_hourly">{{w.temperature}}°</span>
+                    {% if w.precipitation > 0 %}
+                        <span class="precipitation_hourly">| {{w.precipitation}}%</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+	    {% if weather.rain_alert %}
+                <div class="rain_alert">
+                  <i class="fa-solid fa-cloud-rain"></i>
+		  <span> in the next 12h.</span>
+                </div>
+	    {% endif %}
+
+            <div class="tube_container">
+              <i class="fa-solid fa-train-subway tube_icon"></i>
+              <div class="tube_status_container">
+                {% for t in tube %}
+                   <div class="tube_status">
+                     {{t.line}}: 
+                       <span class="{{t.css_class}}">{{t.status}}</span>
+                   </div>
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="calendar_container">
+         <ul class="calendar_list">
+         {% for day_events in events %}
+             <li class="date_header">{{day_events.pretty_date}}</li>
+	     {% if day_events.events|length == 0 %}
+		   <ul class="no_event"><li>Nothing</li></ul>
+	     {% endif %}
+             <ul>
+             {% for event in day_events.events %}
+                <li>{% if event.hour is not none%}{{event.hour}} - {% endif %}
+                {{event.summary}}
+             {% endfor %}
+             </ul>
+         {% endfor %}
+         </ul>
+        </div>
+    </body>
+</html>
